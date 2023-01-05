@@ -17,3 +17,5 @@ https://mvnrepository.com/artifact/org.testng/testng
 
 <img width="640" alt="Screenshot 2023-01-06 at 12 35 16 AM" src="https://user-images.githubusercontent.com/43849911/210860453-2938fb4b-cae0-4208-aa2a-a8f5b15ad252.png">
 <img width="639" alt="Screenshot 2023-01-06 at 12 35 34 AM" src="https://user-images.githubusercontent.com/43849911/210860495-0ac52e27-a2b7-4e96-89be-5d0dbfa55e6e.png">
+
+https://github.com/rest-assured/rest-assured/wiki/Usage
