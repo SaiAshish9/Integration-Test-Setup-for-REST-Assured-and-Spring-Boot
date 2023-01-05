@@ -1,0 +1,18 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://services.test.com/schema/MainData/V1"
+           xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           targetNamespace="http://services.test.com/schema/MainData/V1"
+>
+    <xs:import namespace="http://schemas.xmlsoap.org/soap/envelope/"
+               schemaLocation="http://schemas.xmlsoap.org/soap/envelope/" />
+    <xs:element name="AddResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="AddResult" type="xs:unsignedByte" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
