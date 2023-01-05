@@ -26,6 +26,7 @@ https://mvnrepository.com/artifact/org.testng/testng
 <img width="639" alt="Screenshot 2023-01-06 at 12 35 34 AM" src="https://user-images.githubusercontent.com/43849911/210860495-0ac52e27-a2b7-4e96-89be-5d0dbfa55e6e.png">
 
 https://github.com/rest-assured/rest-assured/wiki/Usage
+https://www.freeformatter.com/xpath-tester.html
 
 <img width="1728" alt="Screenshot 2023-01-06 at 1 24 32 AM" src="https://user-images.githubusercontent.com/43849911/210868571-2ca41ee0-6e1a-4436-aac8-2ce0b8c5a944.png">
 
