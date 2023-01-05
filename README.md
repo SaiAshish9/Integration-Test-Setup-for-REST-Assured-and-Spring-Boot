@@ -27,6 +27,8 @@ https://mvnrepository.com/artifact/org.testng/testng
 
 https://github.com/rest-assured/rest-assured/wiki/Usage
 
-<img width="654" alt="Screenshot 2023-01-05 at 3 33 02 PM" src="https://user-images.githubusercontent.com/43849911/210868440-71e4b846-add9-44f4-99c0-e5defa9962a4.png">
+<img width="1728" alt="Screenshot 2023-01-06 at 1 24 32 AM" src="https://user-images.githubusercontent.com/43849911/210868571-2ca41ee0-6e1a-4436-aac8-2ce0b8c5a944.png">
+
+
 
 
