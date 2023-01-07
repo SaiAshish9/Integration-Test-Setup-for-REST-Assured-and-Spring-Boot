@@ -1,5 +1,6 @@
 package org.example;
 
+import com.aventstack.extentreports.Status;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -15,7 +16,7 @@ import java.io.IOException;
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 
-public class BasicAPITests {
+public class BasicAPITests extends BTest {
 
     DataHandler db = new DataHandler();
     String dataPath = System.getProperty("user.dir") + "/src/main/resources/report.xlsx";
@@ -28,6 +29,8 @@ public class BasicAPITests {
                 get("/users?page=2");
         System.out.println(resp.asString());
         System.out.println(resp.statusCode());
+        Extent.getTest().log(Status.INFO, String.valueOf(resp.statusCode()));
+        Extent.getTest().pass("pass");
     }
 
     @Test(enabled = true, priority = 2)
@@ -85,7 +88,8 @@ public class BasicAPITests {
         }
         int var = response.jsonPath().getInt("page");
         junit.framework.Assert.assertTrue("failed", (var == 2));
-
+        ExtentReport.getTest().log(Status.INFO, String.valueOf(response.statusCode()));
+        ExtentReport.getTest().pass("pass");
     }
 
 

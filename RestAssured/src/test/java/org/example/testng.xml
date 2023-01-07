@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="MySuite" parallel="classes">
+    <test name="Regression">
+        <classes>
+            <class name="org.example.IntegrateWithExtentReporting" />
+            <class name="org.example.BasicAPITests" />
+        </classes>
+    </test>
+</suite>
