@@ -8,12 +8,12 @@
       <![CDATA[passed]]>
     </line>
   </reporter-output>
-  <suite started-at="2023-01-06T17:45:39 IST" name="Default Suite" finished-at="2023-01-06T17:45:41 IST" duration-ms="1869">
+  <suite started-at="2023-01-07T13:47:32 IST" name="Default Suite" finished-at="2023-01-07T13:47:34 IST" duration-ms="2141">
     <groups>
     </groups>
-    <test started-at="2023-01-06T17:45:39 IST" name="RestAssured" finished-at="2023-01-06T17:45:41 IST" duration-ms="1869">
+    <test started-at="2023-01-07T13:47:32 IST" name="RestAssured" finished-at="2023-01-07T13:47:34 IST" duration-ms="2141">
       <class name="org.example.BasicAPITests">
-        <test-method signature="getAuthenticatedUsers()[pri:0, instance:org.example.BasicAPITests@15d9bc04]" started-at="2023-01-06T17:45:39 IST" name="getAuthenticatedUsers" finished-at="2023-01-06T17:45:41 IST" duration-ms="1839" status="PASS">
+        <test-method signature="getAuthenticatedUsers()[pri:0, instance:org.example.BasicAPITests@59717824]" started-at="2023-01-07T13:47:32 IST" name="getAuthenticatedUsers" finished-at="2023-01-07T13:47:34 IST" duration-ms="2104" status="PASS">
           <reporter-output>
             <line>
               <![CDATA[testing...]]>

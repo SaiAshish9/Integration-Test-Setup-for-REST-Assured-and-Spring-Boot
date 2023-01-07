@@ -3,15 +3,22 @@ package org.example;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.apache.poi.ss.usermodel.Cell;
+import org.example.library.DataHandler;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 
 public class BasicAPITests {
+
+    DataHandler db = new DataHandler();
+    String dataPath = System.getProperty("user.dir") + "/src/main/resources/report.xlsx";
 
     @Test(enabled = false)
     public void getUsers() {
@@ -46,7 +53,7 @@ public class BasicAPITests {
     }
 
     @Test(enabled = true)
-    public void getAuthenticatedUsers() {
+    public void getAuthenticatedUsers() throws IOException {
         baseURI = "https://reqres.in/api";
         RequestSpecification req = RestAssured.given();
         req.
@@ -59,7 +66,10 @@ public class BasicAPITests {
         Response response = req.get("/users");
         System.out.println(response.asString());
         System.out.println(response.statusCode());
-//        MatcherAssert
+        db.WriteData_Excel(dataPath,"PASSED", 1 , 3, Cell.CELL_TYPE_STRING );
+        db.WriteData_Excel(dataPath,response.statusCode(), 1 , 4, Cell.CELL_TYPE_NUMERIC );
+        db.WriteData_Excel(dataPath,response.asString(), 1 , 5, Cell.CELL_TYPE_STRING );
+        //        MatcherAssert
         Assert.assertEquals(200, response.statusCode());
         Assert.assertEquals(2, response.jsonPath().getInt("page"));
         Reporter.log("testing...");

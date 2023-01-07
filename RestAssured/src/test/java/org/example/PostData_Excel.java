@@ -9,6 +9,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.example.library.DataHandler;
 import org.json.simple.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -22,22 +23,17 @@ import static io.restassured.RestAssured.baseURI;
 
 public class PostData_Excel {
 
+    DataHandler db = new DataHandler();
+
     @Test()
     public void postData() throws IOException {
         String dataPath = System.getProperty("user.dir");
-        dataPath += "/src/main/report.xlsx";
+        dataPath += "/src/main/resources/report.xlsx";
 
-        File excelFile = new File(dataPath);
-        FileInputStream file = new FileInputStream(excelFile);
-        Workbook workbook = new XSSFWorkbook();
-        workbook.createSheet();
-        Sheet sheet = workbook.getSheetAt(0);
-        Row r1 = sheet.createRow(1);
-        r1.createCell(1);
-        r1.createCell(2);
-        String name = sheet.getRow(1).getCell(1).getStringCellValue();
-        String job = sheet.getRow(1).getCell(2).getStringCellValue();
-        System.out.println("job : " + job + " " + name);
+        Object nameObj = db.ReadData_Excel(dataPath, 1, 1);
+        String name = nameObj.toString();
+        Object jobObj = db.ReadData_Excel(dataPath, 1, 2);
+        String job = jobObj.toString();
 
         baseURI = "https://reqres.in/api";
         RequestSpecification req = RestAssured.given();
@@ -52,26 +48,15 @@ public class PostData_Excel {
         Assert.assertEquals(200, response.statusCode());
         Assert.assertEquals(1, response.jsonPath().getInt("page"));
 
-        if(response.statusCode() == 201){
-            sheet.getRow(1).createCell(3).setCellType(Cell.CELL_TYPE_STRING);
-            sheet.getRow(1).createCell(4).setCellType(Cell.CELL_TYPE_NUMERIC);
-            sheet.getRow(1).createCell(5).setCellType(Cell.CELL_TYPE_STRING);
-            sheet.getRow(1).getCell(3).setCellValue(response.asString());
-            sheet.getRow(1).getCell(4).setCellValue(response.statusCode());
-            sheet.getRow(1).getCell(5).setCellValue("PASSED");
-        }else {
-            sheet.getRow(1).createCell(3).setCellType(Cell.CELL_TYPE_STRING);
-            sheet.getRow(1).createCell(4).setCellType(Cell.CELL_TYPE_NUMERIC);
-            sheet.getRow(1).createCell(5).setCellType(Cell.CELL_TYPE_STRING);
-            sheet.getRow(1).getCell(3).setCellValue(response.asString());
-            sheet.getRow(1).getCell(4).setCellValue(response.statusCode());
-            sheet.getRow(1).getCell(5).setCellValue("FAILED");
+        if (response.statusCode() == 201) {
+            db.WriteData_Excel(dataPath, "PASSED", 1, 3, Cell.CELL_TYPE_STRING);
+            db.WriteData_Excel(dataPath, response.statusCode(), 1, 4, Cell.CELL_TYPE_STRING);
+            db.WriteData_Excel(dataPath, response.asString(), 1, 5, Cell.CELL_TYPE_STRING);
+        } else {
+            db.WriteData_Excel(dataPath, "FAILED", 1, 3, Cell.CELL_TYPE_STRING);
+            db.WriteData_Excel(dataPath, response.statusCode(), 1, 4, Cell.CELL_TYPE_STRING);
+            db.WriteData_Excel(dataPath, response.asString(), 1, 5, Cell.CELL_TYPE_STRING);
         }
-
-        FileOutputStream outputStream = new FileOutputStream(excelFile);
-        workbook.write(outputStream);
-        outputStream.close();
-        file.close();
 
     }
 
